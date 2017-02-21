@@ -9,6 +9,9 @@
 	$status = Thickey\iRemote::get_vehicle_status();
 	$lastTrip = Thickey\iRemote::get_vehicle_last_trip();
 
+	//print(print_r($status, 1));
+	//print(print_r($lastTrip, 1));
+
 	if (slack_enabled == 1)
 	{
 		//process and post the status to slack
