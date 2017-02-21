@@ -36,6 +36,9 @@
 			define ("slack_enabled", $cron['post_to_slack']);
 			define ("initialstate_enabled", $cron['post_to_initialstate']);
 			define ("dweet_enabled", $cron['post_to_dweet']);
+			
+			// debug output
+			define ("debug_output", $debug['print_to_console']);
 		}
 	}
 ?>

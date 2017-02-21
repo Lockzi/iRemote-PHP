@@ -9,8 +9,11 @@
 	$status = Thickey\iRemote::get_vehicle_status();
 	$lastTrip = Thickey\iRemote::get_vehicle_last_trip();
 
-	//print(print_r($status, 1));
-	//print(print_r($lastTrip, 1));
+	if (debug_output == 1)
+	{
+		print(print_r($status, 1));
+		print(print_r($lastTrip, 1));
+	}
 
 	if (slack_enabled == 1)
 	{

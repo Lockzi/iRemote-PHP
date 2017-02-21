@@ -32,4 +32,7 @@
 	//which services to use with the cron task
 	$cron['post_to_slack'] = 1;
 	$cron['post_to_initialstate'] = 1;
+	$cron['post_to_dweet'] = 1;
+	
+	$debug['print_to_console'] = 0;
 ?>

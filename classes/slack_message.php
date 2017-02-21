@@ -18,7 +18,11 @@
 			if (@file_exists($status_log_file))
 			{
 				$status_log = json_decode(file_get_contents($status_log_file),1);
-				//print(print_r($status_log, 1));
+				
+				if (debug_output == 1)
+				{
+					print(print_r($status_log, 1));
+				}
 				
 				if ($status_log['timestamp'] == $vehicle_status['updateTime'])
                         	{
@@ -26,10 +30,11 @@
                         		return 0;
 				}
                         	else if (
-					($status_log['event'] == 'CHARGING_STARTED') && ($vehicle_status['updateReason'] == 'CHARGING_STARTED')
-					|| ($status_log['event'] == 'PREDICTION_UPDATE') && ($vehicle_status['updateReason'] == 'PREDICTION_UPDATE')
-					|| ($status_log['event'] == 'VEHICLE_SECURED') && ($vehicle_status['updateReason'] == 'VEHICLE_SECURED')
-					|| ($status_log['event'] == 'DOOR_STATE_CHANGED') && ($vehicle_status['updateReason'] == 'DOOR_STATE_CHANGED') && ($vehicle_status['doorLockState'] == $status_log['doorLockState'])
+					(($status_log['event'] == 'CHARGING_STARTED') && ($vehicle_status['updateReason'] == 'CHARGING_STARTED'))
+					|| (($status_log['event'] == 'PREDICTION_UPDATE') && ($vehicle_status['updateReason'] == 'PREDICTION_UPDATE'))
+					|| (($status_log['event'] == 'VEHICLE_SECURED') && ($vehicle_status['updateReason'] == 'VEHICLE_SECURED'))
+					|| (($status_log['event'] == 'DOOR_STATE_CHANGED') && ($vehicle_status['updateReason'] == 'DOOR_STATE_CHANGED') && ($vehicle_status['doorLockState'] == $status_log['doorLockState']))
+					|| (($status_log['event'] == 'VEHICLE_SHUTDOWN') && ($vehicle_status['updateReason'] == 'VEHICLE_SHUTDOWN'))
 				)
                         	{
                                 	//still charging we don't want to do anything

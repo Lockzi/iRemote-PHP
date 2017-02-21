@@ -49,6 +49,12 @@
 			if (@file_exists($trip_log_file))
 			{
 				$trip_log = json_decode(file_get_contents($trip_log_file),1);
+				
+				if (debug_output == 1)
+				{
+					print(print_r($trip_log, 1));
+				}
+				
 				$last_fuel_reading = $trip_log['remainingFuel'];
 				if ($trip_log['date'] == $trip_data['date'])
 				{
